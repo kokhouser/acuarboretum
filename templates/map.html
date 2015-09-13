@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+	<head>
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='style.css') }}">
+		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.6.0/pure-min.css">
+		<script src="https://maps.googleapis.com/maps/api/js"></script>
+	    <meta name="viewport" content="initial-scale=1.0">
+    	<meta charset="utf-8">
+	</head>
+  <body>
+  	<div class="pure-menu pure-menu-horizontal">
+	    <a href="#" class="pure-menu-heading pure-menu-link">ACU Arboretum</a>
+	    <ul class="pure-menu-list">
+	        <li class="pure-menu-item"><a href="#" class="pure-menu-link">Home</a></li>
+	        <li class="pure-menu-item pure-menu-selected"><a href="#" class="pure-menu-link">Map</a></li>
+	        <li class="pure-menu-item"><a href="#" class="pure-menu-link">About</a></li>
+	    </ul>
+	</div>
+    <div id="map"></div>
+    <script>
+	  function initialize() {
+	    var mapCanvas = document.getElementById('map');
+	    var mapOptions = {
+	      center: new google.maps.LatLng(32.469449, -99.707707),
+	      zoom: 16,
+	      minZoom: 15,
+	      scrollwheel: false,
+	      draggable: false,
+	      mapTypeId: google.maps.MapTypeId.ROADMAP
+	    }
+	    var map = new google.maps.Map(mapCanvas, mapOptions);
+	  }
+	  google.maps.event.addDomListener(window, 'load', initialize);
+	</script>
+	</body>
+</html>
