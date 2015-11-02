@@ -29,6 +29,8 @@
     		var sidebarContent = "<br>";
     		// Calls some AJAX wizardry shit
     		sidebarContent += "<form id ='addPlant' class ='add-Plant' onSubmit='return send();'>";
+    		sidebarContent += "ID: <br>";
+	    	sidebarContent += "<input type=\"text\" name=\"ide\" value=\""+ this.ide +"\"readonly=\"readonly\"><br><br>";
     		sidebarContent += "Common name: <br>";
     		sidebarContent += "<input type=\"text\" name=\"commonName\"><br><br>";
     		sidebarContent += "Latin name: <br>";
@@ -62,7 +64,7 @@
 	    });
 	    {%for plant in plants%}
 	    	allPlants.push({
-	    			id:{{plant.id}},
+	    			ide:{{plant.id}},
 	    			commonName:"{{plant.commonName}}",
 	    			latinName:"{{plant.latinName}}",
 	    			latitude:{{plant.latitude}},
@@ -73,6 +75,7 @@
 	    for (var i = 0; i < allPlants.length; i++){
 	    	var positioning = {lat: Number(allPlants[i].latitude), lng: Number(allPlants[i].longitude)};
 	    	var newMarker = new google.maps.Marker({
+	    		ide: allPlants[i].ide,
 	    		position: positioning,
 	    		map: map,
 	    		commonName: allPlants[i].commonName,
@@ -82,6 +85,8 @@
 	  			console.log("Clicked "+ this.commonName);
 	    		var sidebarContent = "<br>";
 	    		sidebarContent += "<form id ='addPlant' class ='add-Plant' onSubmit='return send();'>";
+	    		sidebarContent += "ID: <br>";
+	    		sidebarContent += "<input type=\"text\" name=\"ide\" value=\""+ this.ide +"\"readonly=\"readonly\"><br><br>";
 	    		sidebarContent += "Common name: <br>";
 	    		sidebarContent += "<input type=\"text\" name=\"commonName\" value=\""+ this.commonName +"\"><br><br>";
 	    		sidebarContent += "Latin name: <br>";
@@ -90,6 +95,7 @@
 	    		sidebarContent += "<input type=\"text\" name=\"latitude\" value=\""+ this.position.lat() +"\"><br><br>";
 	    		sidebarContent += "Longitude: <br>";
 	    		sidebarContent += "<input type=\"text\" name=\"longitude\" value=\""+ this.position.lng() +"\"><br><br>";
+	    		sidebarContent += "<input type=\"checkbox\" name=\"delete\" value=\"delete\">Delete Plant<br><br>";
 	    		sidebarContent += "<button value='submit'>Submit</button></form>";
 	    		$('#left-sidebar').html(sidebarContent);
 	    	});
