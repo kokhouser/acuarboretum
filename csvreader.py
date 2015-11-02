@@ -41,6 +41,6 @@ for row in reader:
         	longitude = 0
         p = models.Plant(commonName = fullCommonName, latinName = scientificName, latitude = latitude, longitude = longitude)
         db.session.add(p)
-        db.session.commit()
     print (rownum)
-    rownum += 1        
+    rownum += 1
+db.session.commit()        
