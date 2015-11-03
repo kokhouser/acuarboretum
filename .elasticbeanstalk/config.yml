@@ -1,0 +1,10 @@
+branch-defaults:
+  master:
+    environment: null
+global:
+  application_name: acuarboretum
+  default_ec2_keyname: first
+  default_platform: Python 2.7
+  default_region: us-west-2
+  profile: eb-cli
+  sc: git
